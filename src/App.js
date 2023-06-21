@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes, Switch } from "react-router-dom";
+import Login from './components/Login';
+import AddHotes from './components/Admin/AddHotels';
+import Userpage from './components/user/Userpage';
+import Adminpage from './components/Admin/Adminpage';
+import Hotels from './components/user/Hotels';
+import Rooms from './components/user/Rooms';
+import Bookings from './components/user/Bookings';
 
-function App() {
+
+
+export default function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
 
-export default App;
+      <Routes>
+
+        <Route path='/' element={<Login />} >
+        </Route>
+
+        <Route path='/userpage' element={<Userpage />}>
+
+          <Route path='/userpage/hotels' element={<Hotels />} />
+          <Route path='/userpage/rooms' element={<Rooms />} />
+          <Route path='/userpage/bookings' element={<Bookings />} />
+        </Route>
+
+        <Route path='/adminpage' element={<Adminpage />}>
+
+          <Route path='/adminpage/addhotels' element={<AddHotes />} />
+
+        </Route>
+
+
+      </Routes>
+
+    </Router>
+  )
+}
