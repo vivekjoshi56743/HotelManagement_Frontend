@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Hotels() {
     const [hotels, setHotels] = useState([]);
-    
-    
-    
+
+    const navigate = useNavigate();
+
     const handleLook = (hotelId) => {
         // This function will be called when the "look" button is clicked.
         // It will pass the hotel id to the room component.
         // You can use the "useHistory" hook to navigate to the room component.
-        
-      };
+
+        navigate('/userpage/rooms', { state: { hotelId: hotelId } });
+
+    };
     useEffect(() => {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -36,24 +38,30 @@ export default function Hotels() {
 
     return (
         <>
-        <div>
-            <h1>Hotels</h1>
-            <div>
-                {hotels.map((hotel, index) => (
-                    <Row key={index}>
-                        <Col sm={6}>
-                            <h2>{hotel.name}</h2>
-                            <p>{hotel.address}</p>
-                            <p>{hotel.phoneNumber}</p>
-                        </Col>
-                        <Col sm={6}>
-                            <Button onClick={() => handleLook(hotel.hotel_id)}>Look</Button>
-                        </Col>
-                    </Row>
+            <div className="row">
+                {hotels.map(hotel => (
+                    <div className="col-md-4" key={hotel.hotel_id}>
+                        <Card style={{ width: '100%',margin: '10px 5px' }}>
+                            <Card.Body>
+                                <h4>Hotel Name: {hotel.name}</h4>
+                                <p>Address: {hotel.address}</p>
+                                <p>Phone: {hotel.phoneNumber}</p>
+
+                                <Button
+                                    variant="primary"
+                                    style={{ margin: '10px 0' }}
+                                    onClick={() => handleLook(hotel.hotel_id)}
+                                >
+                                    Look Rooms
+                                </Button>
+                                
+                            </Card.Body>
+                        </Card>
+
+                    </div>
                 ))}
             </div>
-        </div>
-        
+
         </>
     )
 }
