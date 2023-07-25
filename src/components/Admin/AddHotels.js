@@ -30,7 +30,7 @@ const AddHotels = () => {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
             headers.append('Authorization', 'Basic ' + btoa(username + ':' + password));
-
+            console.log(JSON.stringify(hotelData));
             fetch('http://localhost:8080/hotels', {
                 method: 'POST',
                 headers: headers,
@@ -71,15 +71,15 @@ const AddHotels = () => {
                         <form onSubmit={handleCreateHotel}>
                             <div className="mb-3">
                                 <label htmlFor="hotelName" className="form-label">Hotel Name</label>
-                                <input type="text" className="form-control" id="hotelName" placeholder="Hotel Name" />
+                                <input type="text"  onChange={(e) => setname(e.target.value)} className="form-control" id="hotelName" placeholder="Hotel Name" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="address" className="form-label">Address</label>
-                                <input type="text" className="form-control" id="address" placeholder="Address" />
+                                <input type="text" onChange={(e) => setaddress(e.target.value)}  className="form-control" id="address" placeholder="Address" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
-                                <input type="text" className="form-control" id="phoneNumber" placeholder="Phone Number" />
+                                <input type="text" onChange={(e) => setphoneNumber(e.target.value)}  className="form-control" id="phoneNumber" placeholder="Phone Number" />
                             </div>
                             <button type="submit" className="btn btn-primary">Create Hotel</button>
                         </form>

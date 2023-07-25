@@ -34,14 +34,15 @@ export default function Hotels() {
             });
     }, [])
 
-
+    
 
     return (
         <>
             <div className="row">
                 {hotels.map(hotel => (
                     <div className="col-md-4" key={hotel.hotel_id}>
-                        <Card style={{ width: '100%',margin: '10px 5px' }}>
+                       
+                        <Card style={{ width: '100%', margin: '10px 5px' }}>
                             <Card.Body>
                                 <h4>Hotel Name: {hotel.name}</h4>
                                 <p>Address: {hotel.address}</p>
@@ -54,7 +55,7 @@ export default function Hotels() {
                                 >
                                     Look Rooms
                                 </Button>
-                                
+
                             </Card.Body>
                         </Card>
 

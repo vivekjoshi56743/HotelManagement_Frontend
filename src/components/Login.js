@@ -84,7 +84,7 @@ export default function Login() {
 
   return (
     <>
-    <div className="d-flex justify-content-center align-items-center vh-100"  style={{ backgroundImage: 'url("/images/background4.jpg")', backgroundSize: 'contain', backgroundPosition: 'center' }}>
+    <div className="d-flex justify-content-center align-items-center vh-100"  style={{ backgroundImage: 'url("/images/background4.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="border rounded p-4" style={{ width: '4.5in', height: '4in' , backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
         <h2 className="mb-4">Log in</h2>
         <form onSubmit={handleLogin}>
